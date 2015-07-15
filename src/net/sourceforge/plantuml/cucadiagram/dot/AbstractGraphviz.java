@@ -92,7 +92,7 @@ abstract class AbstractGraphviz implements Graphviz {
 			Log.info("Starting Graphviz process " + Arrays.asList(cmd));
 			Log.info("DotString size: " + dotString.length());
 			p = new ProcessRunner(cmd);
-			state = p.run(dotString.getBytes(), os);
+			state = p.run(dotString.getBytes("UTF8"), os);
 			// if (state == ProcessState.TERMINATED_OK) {
 			// result = true;
 			// }
