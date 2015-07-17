@@ -68,8 +68,13 @@ public class AtomImg implements Atom {
 		final UFont font = new UFont("Monospaced", Font.PLAIN, 14);
 		final FontConfiguration fc = new FontConfiguration(font, HtmlColorUtils.BLACK, HtmlColorUtils.BLUE, true);
 		try {
-			final File f = FileSystem.getInstance().getFile(src);
-			if (f.exists() == false) {
+				File f = null;
+				try {
+					f = FileSystem.getInstance().getFile(src);
+				} catch (Exception e) {
+					//e.printStackTrace();
+				}
+				if (f == null || f.exists() == false) {
 				// Check if valid URL
 				if (src.startsWith("http:") || src.startsWith("https:")) {
 					final byte image[] = getFile(src);

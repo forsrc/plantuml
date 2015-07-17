@@ -96,8 +96,13 @@ public class Img implements HtmlCommand {
 		}
 		final String src = m.group(1);
 		try {
-			final File f = FileSystem.getInstance().getFile(src);
-			if (f.exists() == false) {
+			File f = null;
+			try {
+				f = FileSystem.getInstance().getFile(src);
+			} catch (Exception e) {
+				//e.printStackTrace();
+			}
+			if (f == null || f.exists() == false) {
 				// Check if valid URL
 				if (src.startsWith("http:") || src.startsWith("https:")) {
 					final byte image[] = getFile(src);
