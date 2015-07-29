@@ -54,5 +54,26 @@
 		<delete dir="build" />
 		<delete dir="dist" />
 	</target>
+	<target name="javadocs" depends="compile">
+        <javadoc sourcepath="src" packagenames="*" destdir="javadoc" 
+                 private="true">
+			<doclet name="org.umlgraph.doclet.UmlGraphDoc" path="d:/tools/umlgraph-5.6.6.jar">
+				<param name="-inferrel"/>
+				<param name="-inferdep"/>
+				<param name="-hide" value="java.*"/>
+				<param name="-collpackages" value="java.util.*"/>
+				<param name="-qualify"/>
+				<param name="-postfixpackage"/>
+				<param name="-nodefontsize" value="9"/>
+				<param name="-nodefontpackagesize" value="7"/>
+				<param name="-attributes" />
+				<param name="-operations" />
+				<param name="-enumerations" />
+				<param name="-enumconstants" />
+				<param name="-types" />
+				<param name="-visibility" />
+			</doclet>
+        </javadoc>
+</target>
 
 </project>
